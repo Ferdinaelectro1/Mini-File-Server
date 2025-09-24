@@ -7,7 +7,7 @@ std::string Parser::parse(const std::string& raw)
     json request = json::parse(raw);
     json response ;
     cmdType cmdT = getCmdType(request["cmd"]);//récupérer le type de commande
-    std::cout << cmdT << std::endl;
+    //std::cout << cmdT << std::endl;
     switch (cmdT)
     {
     case cmdType::CREATE_DIR :
@@ -23,7 +23,7 @@ std::string Parser::parse(const std::string& raw)
         /* code */
         break;
     case cmdType::REMOVE_DIR :
-        /* code */
+        response = file_manager.removeDir(request["args"][0]);
         break;
     case cmdType::UNKNOW_CMD :
         response =  file_manager.unknowCmd();

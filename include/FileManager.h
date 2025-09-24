@@ -31,7 +31,7 @@ class FileManager
        json writeToFile(const std::string& file_name,const fs::path& dir_path);
        json createDir(const fs::path& dir_path);
        json createDirs(const fs::path& dir_path);
-       json removeDir(const fs::path& dir_path);
+       json removeDir(const std::string& dir_path);
        json renameDir(const fs::path& dir_path);
        json unknowCmd();
        int  getDirFilesLength(const fs::path& dir_path);

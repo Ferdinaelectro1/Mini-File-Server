@@ -61,3 +61,20 @@ json FileManager::removeFile(const std::string& file_name)
     response["filName"] = file_name;
     return response;
 }
+
+json FileManager::removeDir(const std::string& dir_path)
+{
+    json response;
+    if(fs::remove_all(dir_path))
+    {
+        response["status"] = "SUCCES";
+        response["message"] = "Dossier supprimé";
+    }
+    else
+    {
+        response["status"] = "ERROR";
+        response["message"] = "Impossible de supprimer le dossier (inexistant ?)";
+    }
+    response["dirName"] = dir_path;
+    return response;
+}
