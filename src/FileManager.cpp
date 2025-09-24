@@ -27,3 +27,20 @@ json FileManager::unknowCmd()
     response["message"] = "Commande inconnu !!";
     return response;
 }
+
+json FileManager::createDir(const fs::path& dir_path)
+{
+    json response;
+    if(fs::create_directory(dir_path))
+    {
+        response["status"] = "SUCCES";
+        response["message"] = "Directory Create Succesfull";
+    }
+    else
+    {
+        response["status"] = "ERROR";
+        response["message"] = "Directory already exists";
+    }
+    response["dirName"] = dir_path;
+    return response;
+}

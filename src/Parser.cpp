@@ -11,7 +11,7 @@ std::string Parser::parse(const std::string& raw)
     switch (cmdT)
     {
     case cmdType::CREATE_DIR :
-        /* code */
+        response = file_manager.createDir(request["args"][0]);
         break;
     case cmdType::CREATE_FILE :
         response = file_manager.createFile(request["args"][0]);
