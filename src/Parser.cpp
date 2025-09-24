@@ -30,7 +30,10 @@ std::string Parser::parse(const std::string& raw)
         break;
     case cmdType::WRITE_FILE :
         /* code */
-        break;    
+        break;  
+    case cmdType::REMOVE_FILE :
+        response = file_manager.removeFile(request["args"][0]);
+        break;     
     default:
         break;
     }

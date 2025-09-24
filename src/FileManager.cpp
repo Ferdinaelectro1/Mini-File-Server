@@ -44,3 +44,20 @@ json FileManager::createDir(const fs::path& dir_path)
     response["dirName"] = dir_path;
     return response;
 }
+
+json FileManager::removeFile(const std::string& file_name)
+{
+    json response;
+    if(fs::remove(file_name))
+    {
+        response["status"] = "SUCCES";
+        response["message"] = "Fichier supprimé";
+    }
+    else
+    {
+        response["status"] = "ERROR";
+        response["message"] = "Impossible de supprimer (inexistant ?)";
+    }
+    response["filName"] = file_name;
+    return response;
+}
