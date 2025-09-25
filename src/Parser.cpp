@@ -17,7 +17,7 @@ std::string Parser::parse(const std::string& raw)
         response = file_manager.createFile(request["args"][0]);
         break;
     case cmdType::LIST_DIR_FILE :
-        /* code */
+        response = file_manager.listDirFiles(request["args"][0]);
         break;
     case cmdType::READ_FILE :
         /* code */

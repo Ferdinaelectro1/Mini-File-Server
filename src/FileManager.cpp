@@ -78,3 +78,35 @@ json FileManager::removeDir(const std::string& dir_path)
     response["dirName"] = dir_path;
     return response;
 }
+
+json FileManager::listDirFiles(const std::string& dir_path)
+{
+    json response;
+    if (!fs::exists(dir_path) || !fs::is_directory(dir_path)) {
+        response["status"] = "ERROR";
+        response["message"] = "Chemin invalide ou non un dossier";
+        return response;
+    }
+    response["Dirs"] = json::array();
+    response["Files"] = json::array();
+    for (const auto& entry : fs::recursive_directory_iterator(dir_path))
+    {
+        response["status"] = "SUCCES";
+        if (entry.is_directory())
+        {
+            std::cout << "[DIR]  ";
+            response["Dirs"].push_back(entry.path().filename().string()); 
+        }
+        else if (entry.is_regular_file())
+        {
+            std::cout << "[FILE] ";
+            response["Files"].push_back(entry.path().filename().string()); 
+        }
+        else
+            std::cout << "[???]  ";
+
+        std::cout << entry.path().filename().string() << "\n";
+    }
+    response["DirPath"] = dir_path;
+    return response;
+}

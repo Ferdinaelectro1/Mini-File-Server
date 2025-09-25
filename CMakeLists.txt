@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.2)
 
-project(mini_chat)
+project(mini_file_server)
 
 add_executable(
     ${PROJECT_NAME}

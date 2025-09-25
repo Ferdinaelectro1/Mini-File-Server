@@ -35,7 +35,7 @@ class FileManager
        json renameDir(const fs::path& dir_path);
        json unknowCmd();
        int  getDirFilesLength(const fs::path& dir_path);
-       std::vector<std::string> getDirFiles(const fs::path& dir_path);
+       json listDirFiles(const std::string& dir_path);
        std::string* getDirFiles();
 
 
